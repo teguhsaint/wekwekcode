@@ -87,7 +87,14 @@ function activate(context) {
     tambah_route();
   });
 
-  context.subscriptions.push(showS, duck_starter, ci_controller, ci_routes, rutein);
+  let ci_view_extend = vscode.commands.registerCommand("wekwekcode.ci_view_extend", async function () {
+    const nama_file = await vscode.window.showInputBox({ placeHolder: "Masukkan Nama File Template" });
+    if (nama_file) {
+      vscode.window.showInformationMessage("File Berhasil di Buat");
+    }
+  });
+
+  context.subscriptions.push(showS, duck_starter, ci_controller, ci_routes, rutein, ci_view_extend);
   showS.show();
 }
 

@@ -40,12 +40,17 @@
         "command": "wekwekcode.rutein",
         "title": "Roaduck",
         "category": "WekCode"
+      },
+      {
+        "command": "wekwekcode.ci_view_extend",
+        "title": "Buat View Extend",
+        "category": "CI4"
       }
     ],
     "keybindings": [
       {
         "command": "wekwekcode.rutein",
-        "key": "SHIFT+D"
+        "key": "CTRL+SHIFT+d"
       }
     ]
   },
