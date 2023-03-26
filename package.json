@@ -12,7 +12,6 @@
       "name": "Naufal",
       "url": "https://instagram.com/noval_amirul"
     }
-    
   ],
   "icon": "fav.png",
   "repository": {
@@ -62,6 +61,16 @@
       {
         "command": "wekwekcode.rutein",
         "key": "CTRL+SHIFT+d"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "php",
+        "path": "snippet/ci4.json"
+      },
+      {
+        "language": "html",
+        "path": "snippet/ci4.json"
       }
     ]
   },

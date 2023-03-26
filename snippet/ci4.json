@@ -1,0 +1,10 @@
+{
+  "ci4_controller": {
+    "prefix": "ci4_cont",
+    "body": "hello"
+  },
+  "ci4_extend": {
+    "prefix": "ci4_extend_view",
+    "body": "exten"
+  }
+}
