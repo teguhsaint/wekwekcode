@@ -23,7 +23,28 @@ function activate(context) {
     vscode.env.clipboard
       .writeText(selectedText)
       .then(() => {
-        console.log("Teks berhasil disalin ke clipboard " + selectedText);
+        const copiedText = selectedText;
+        const pattern = /http[s]?:\/\/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+/g;
+        const urls = copiedText.match(pattern);
+        if (urls) {
+          console.log(urls[0]);
+
+          const download_files = fs.createWriteStream(path.join(direktori_user, path.basename(urls[0])));
+
+          https.get(urls[0], (response) => {
+            response.pipe(download_files);
+          });
+          download_files.on("finish", () => {
+            download_files.close();
+
+            vscode.env.clipboard.writeText(path.basename(urls[0]));
+            vscode.commands.executeCommand("editor.action.clipboardPasteAction");
+            vscode.window.setStatusBarMessage(`${path.basename(urls[0])} Has Been Downloaded`);
+          });
+        } else {
+          console.log("Tidak ada URL dalam teks yang disalin");
+          vscode.window.showErrorMessage("Tidak ada URL dalam teks yang disalin");
+        }
       })
       .catch((err) => {
         console.error(err);

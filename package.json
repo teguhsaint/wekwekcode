@@ -1,71 +1,77 @@
 {
-	"name": "wekwekcode",
-	"displayName": "WEK WEK CODE",
-	"description": "THE WEK WEK CODE SHORTCUT",
-	"publisher": "CodeSaint",
-	"icon": "fav.png",
-	"repository": {
-		"url": "https://github.com/teguhsaint/wekwekcode.git"
-	},
-	"version": "1.0.2",
-	"engines": {
-		"vscode": "^1.74.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onStartupFinished",
-		"onCommand:wekwekcode.duck_start"
-	],
-	"main": "./extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "wekwekcode.duck_start",
-				"title": "CI4 Template",
-				"category": "CI4"
-			},
-			{
-				"command": "wekwekcode.ci_controller",
-				"title": "CI4 Controller",
-				"category": "CI4"
-			},
-			{
-				"command": "wekwekcode.ci_routes",
-				"title": "CI4 Routes",
-				"category": "CI4"
-			},
-			{
-				"command": "wekwekcode.rutein",
-				"title": "Roaduck",
-				"category": "CI4"
-			}
-		]
-	},
-	"scripts": {
-		"lint": "eslint .",
-		"pretest": "npm run lint",
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.74.0",
-		"@types/glob": "^8.0.0",
-		"@types/mocha": "^10.0.1",
-		"@types/node": "16.x",
-		"eslint": "^8.28.0",
-		"glob": "^8.0.3",
-		"mocha": "^10.1.0",
-		"typescript": "^4.9.3",
-		"@vscode/test-electron": "^2.2.0"
-	},
-	"dependencies": {
-		"decompress": "^4.2.1"
-	},
-	"__metadata": {
-		"id": "89fce65e-2906-4587-a652-1103cba84b91",
-		"publisherDisplayName": "Code Saint",
-		"publisherId": "aabae9aa-3a6b-4247-82d6-0799ebf2416c",
-		"isPreReleaseVersion": false
-	}
+  "name": "wekwekcode",
+  "displayName": "WEK WEK CODE",
+  "description": "THE WEK WEK CODE SHORTCUT",
+  "publisher": "CodeSaint",
+  "icon": "fav.png",
+  "repository": {
+    "url": "https://github.com/teguhsaint/wekwekcode.git"
+  },
+  "version": "1.0.2",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:wekwekcode.duck_start"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "wekwekcode.duck_start",
+        "title": "CI4 Template",
+        "category": "CI4"
+      },
+      {
+        "command": "wekwekcode.ci_controller",
+        "title": "CI4 Controller",
+        "category": "CI4"
+      },
+      {
+        "command": "wekwekcode.ci_routes",
+        "title": "CI4 Routes",
+        "category": "CI4"
+      },
+      {
+        "command": "wekwekcode.rutein",
+        "title": "Roaduck",
+        "category": "WekCode"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "wekwekcode.rutein",
+        "key": "SHIFT+D"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3",
+    "@vscode/test-electron": "^2.2.0"
+  },
+  "dependencies": {
+    "decompress": "^4.2.1"
+  },
+  "__metadata": {
+    "id": "89fce65e-2906-4587-a652-1103cba84b91",
+    "publisherDisplayName": "Code Saint",
+    "publisherId": "aabae9aa-3a6b-4247-82d6-0799ebf2416c",
+    "isPreReleaseVersion": false
+  }
 }
