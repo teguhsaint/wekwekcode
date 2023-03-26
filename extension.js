@@ -17,9 +17,8 @@ const direktori_user = vscode.workspace.workspaceFolders[0].uri.path.substring(1
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-  console.log('Congratulations, your extension "wekwekcode" is now active!');
   let showS = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 200);
-  showS.text = "$(zap) Duck Starter";
+  showS.text = "$(my-duck)  Duck Starter";
   showS.command = "wekwekcode.duck_start";
   showS.color = "yellow";
 

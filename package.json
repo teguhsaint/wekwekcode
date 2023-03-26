@@ -17,7 +17,7 @@
   "repository": {
     "url": "https://github.com/teguhsaint/wekwekcode.git"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -72,7 +72,16 @@
         "language": "html",
         "path": "snippet/ci4.json"
       }
-    ]
+    ],
+    "icons": {
+      "my-duck": {
+        "description": "myduck",
+        "default": {
+          "fontPath": "./icons/e800.woff",
+          "fontCharacter": "\\e806"
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",
