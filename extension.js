@@ -23,7 +23,7 @@ function activate(context) {
   showS.command = "wekwekcode.duck_start";
   showS.color = "yellow";
 
-  let rutein = vscode.commands.registerCommand("wekwekcode.downloadcss_orjs", function () {
+  let download_filess = vscode.commands.registerCommand("wekwekcode.downloadcss_orjs", function () {
     // Dapatkan teks yang dipilih pada editor
     const editor = vscode.window.activeTextEditor;
     const selectedText = editor.document.getText(editor.selection);
@@ -103,7 +103,7 @@ function activate(context) {
     }
   });
 
-  context.subscriptions.push(showS, duck_starter, ci_controller, ci_routes, rutein, ci_view_extend);
+  context.subscriptions.push(showS, duck_starter, ci_controller, ci_routes, download_filess, ci_view_extend);
   showS.show();
 }
 
