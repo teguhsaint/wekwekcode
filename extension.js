@@ -2,7 +2,14 @@ const vscode = require("vscode");
 const path = require("path");
 const https = require("https");
 const fs = require("fs");
-const decompress = require("decompress");
+
+// MODULE
+const buat_view = require("./lib/buat_view_ci4");
+const start_phpserver = require("./lib/start_phpserver");
+const download_template = require("./lib/download_template");
+
+// END MODULE
+
 const direktori_user = vscode.workspace.workspaceFolders[0].uri.path.substring(1, 1000);
 /**
  * @param {vscode.ExtensionContext} context
@@ -14,7 +21,7 @@ function activate(context) {
   showS.command = "wekwekcode.duck_start";
   showS.color = "yellow";
 
-  let rutein = vscode.commands.registerCommand("wekwekcode.rutein", function () {
+  let rutein = vscode.commands.registerCommand("wekwekcode.downloadcss_orjs", function () {
     // Dapatkan teks yang dipilih pada editor
     const editor = vscode.window.activeTextEditor;
     const selectedText = editor.document.getText(editor.selection);
@@ -64,13 +71,13 @@ function activate(context) {
       // handle selected option
       switch (selection) {
         case "Bootstrap 5.3 Template":
-          download_template_func("https://binateknologi.com/tool/ex/bs53.zip", showS);
+          download_template.download_template_func("https://binateknologi.com/tool/ex/bs53.zip", showS);
           break;
         case "CodeIgniter 4 Template":
-          download_template_func("https://binateknologi.com/tool/ex/ci4.zip", showS);
+          download_template.download_template_func("https://binateknologi.com/tool/ex/ci4.zip", showS);
           break;
         case "Start PHP Server":
-          start_php_server();
+          start_phpserver.start_php_server();
           break;
 
         default:
@@ -90,7 +97,7 @@ function activate(context) {
   let ci_view_extend = vscode.commands.registerCommand("wekwekcode.ci_view_extend", async function () {
     const nama_file = await vscode.window.showInputBox({ placeHolder: "Masukkan Nama File Template" });
     if (nama_file) {
-      vscode.window.showInformationMessage("File Berhasil di Buat");
+      buat_view.buat_views(nama_file);
     }
   });
 
@@ -104,65 +111,6 @@ module.exports = {
   activate,
   deactivate,
 };
-
-function download_template_func(urlkus, statusbar) {
-  statusbar.hide();
-
-  let st2 = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 200);
-  st2.text = "$(sync~spin) Duck is Busy Right Now..";
-  st2.color = "red";
-  st2.show();
-
-  var urlku = urlkus;
-  const basename = path.basename(urlku);
-  const filzip = fs.createWriteStream(path.join(direktori_user, path.basename(urlku)));
-  https.get(urlku, (response) => {
-    vscode.window.setStatusBarMessage("Tunggu Sebentar.. Download Zip File...", 8500);
-
-    var cur = 0;
-    var len = parseInt(response.headers["content-length"], 10);
-
-    response.on("data", function (chunk) {
-      cur += chunk.length;
-      vscode.window.setStatusBarMessage("Downloading " + ((100.0 * cur) / len).toFixed(2) + "%  Size : " + (cur / 1048576).toFixed(2) + " mb", 5000);
-    });
-    response.pipe(filzip);
-    filzip.on("finish", (err) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      filzip.close();
-      console.log("fone");
-
-      vscode.window.withProgress(
-        {
-          location: vscode.ProgressLocation.Window,
-          title: "Unzipping files...",
-          cancellable: false,
-        },
-        async () => {
-          try {
-            const files = await decompress(direktori_user + "/" + basename, direktori_user)
-              .then(() => {
-                fs.unlink(direktori_user + "/" + basename, () => {});
-                vscode.window.setStatusBarMessage("Selesai..", 5000);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-
-            vscode.window.showInformationMessage(`Selesai..`);
-            st2.hide();
-            statusbar.show();
-          } catch (error) {
-            vscode.window.showErrorMessage(`Error unzipping files: ${error.message}`);
-          }
-        }
-      );
-    });
-  });
-}
 
 function cicontroller_func() {
   const dir_controller = path.join(direktori_user, "app/Controllers/");
@@ -258,13 +206,4 @@ function tambah_route() {
   }
 
   tambah();
-}
-
-function start_php_server() {
-  const terci4 = vscode.window.createTerminal("CI4 Localhost");
-  terci4.show(true);
-  terci4.sendText("php -S localhost:8080", true);
-
-  vscode.window.setStatusBarMessage("Please Check In Browser Or Open Terminal with Ctrl+J");
-  vscode.env.openExternal("http://localhost:8080");
 }

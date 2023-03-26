@@ -48,8 +48,8 @@
         "category": "CI4"
       },
       {
-        "command": "wekwekcode.rutein",
-        "title": "Roaduck",
+        "command": "wekwekcode.downloadcss_orjs",
+        "title": "Download CSS or JS",
         "category": "WekCode"
       },
       {
