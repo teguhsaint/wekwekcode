@@ -3,11 +3,22 @@
   "displayName": "WEK WEK CODE",
   "description": "THE WEK WEK CODE SHORTCUT",
   "publisher": "CodeSaint",
+  "author": {
+    "name": "Teguh Saint",
+    "url": "https://instagram.com/teguh.saint"
+  },
+  "contributors": [
+    {
+      "name": "Naufal",
+      "url": "https://instagram.com/noval_amirul"
+    }
+    
+  ],
   "icon": "fav.png",
   "repository": {
     "url": "https://github.com/teguhsaint/wekwekcode.git"
   },
-  "version": "1.0.2",
+  "version": "1.0.4",
   "engines": {
     "vscode": "^1.74.0"
   },
