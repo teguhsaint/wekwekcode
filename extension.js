@@ -23,6 +23,70 @@ function activate(context) {
   showS.command = "wekwekcode.duck_start";
   showS.color = "yellow";
 
+  let duck_starter = vscode.commands.registerCommand("wekwekcode.duck_start", async function () {
+    // array of options
+    const opt2 = [
+      {
+        label: "Template",
+        kind: vscode.QuickPickItemKind.Separator, // this is new
+      },
+      { label: "Bootstrap 5.3 Template", description: "Include Light & Dark Mode", items: 1 },
+      { label: "CodeIgniter 4 Template", description: "Include extend & section views", items: 2 },
+
+      {
+        label: "CodeIgniter 4",
+        kind: vscode.QuickPickItemKind.Separator, // this is new
+      },
+      { label: "Add Controller", description: "New CI4 Controller", items: 3 },
+      { label: "Add Views", description: "New CI4 Views", items: 4 },
+      { label: "Add Route", description: "New CI4 Route", items: 5 },
+
+      {
+        kind: vscode.QuickPickItemKind.Separator, // this is new
+      },
+      {
+        kind: vscode.QuickPickItemKind.Separator, // this is new
+      },
+      { label: "Start PHP Server", items: 6 },
+      {
+        kind: vscode.QuickPickItemKind.Separator, // this is new
+      },
+    ];
+
+    // showQuickPick
+    vscode.window.showQuickPick(opt2).then((selection) => {
+      if (!selection) {
+        // handle no selection
+        return;
+      }
+
+      // handle selected option
+      switch (selection.items) {
+        case 1:
+          download_template.download_template_func("https://binateknologi.com/tool/ex/bs53.zip", showS);
+          break;
+        case 2:
+          download_template.download_template_func("https://binateknologi.com/tool/ex/ci4.zip", showS);
+          break;
+        case 3:
+          vscode.commands.executeCommand("wekwekcode.ci_controller");
+          break;
+        case 4:
+          vscode.commands.executeCommand("wekwekcode.ci_view_extend");
+          break;
+        case 5:
+          vscode.commands.executeCommand("wekwekcode.ci_routes");
+          break;
+        case 6:
+          start_phpserver.start_php_server();
+          break;
+
+        default:
+          break;
+      }
+    });
+  });
+
   let download_filess = vscode.commands.registerCommand("wekwekcode.downloadcss_orjs", function () {
     // Dapatkan teks yang dipilih pada editor
     const editor = vscode.window.activeTextEditor;
@@ -58,34 +122,6 @@ function activate(context) {
       .catch((err) => {
         console.error(err);
       });
-  });
-
-  let duck_starter = vscode.commands.registerCommand("wekwekcode.duck_start", async function () {
-    // array of options
-    const options = ["Bootstrap 5.3 Template", "CodeIgniter 4 Template", "Start PHP Server"];
-    // showQuickPick
-    vscode.window.showQuickPick(options).then((selection) => {
-      if (!selection) {
-        // handle no selection
-        return;
-      }
-
-      // handle selected option
-      switch (selection) {
-        case "Bootstrap 5.3 Template":
-          download_template.download_template_func("https://binateknologi.com/tool/ex/bs53.zip", showS);
-          break;
-        case "CodeIgniter 4 Template":
-          download_template.download_template_func("https://binateknologi.com/tool/ex/ci4.zip", showS);
-          break;
-        case "Start PHP Server":
-          start_phpserver.start_php_server();
-          break;
-
-        default:
-          break;
-      }
-    });
   });
 
   let ci_controller = vscode.commands.registerCommand("wekwekcode.ci_controller", function () {
