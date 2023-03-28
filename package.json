@@ -34,6 +34,10 @@
       {
         "title": "wekwekcode",
         "properties": {
+          "wekwekcode.address": {
+            "type": "string",
+            "default": "localhost:8080"
+          },
           "wekwekcode.mysqlhost": {
             "type": "string",
             "default": "localhost"
@@ -45,16 +49,19 @@
           "wekwekcode.mysqlpassword": {
             "type": "string",
             "default": ""
+          },
+          "wekwekcode.xamppmysqlbindirectory": {
+            "type": "string",
+            "default": "C:\\xampp\\mysql\\bin\\"
+          },
+          "wekwekcode.xamppphpexedirectory": {
+            "type": "string",
+            "default": "C:\\xampp\\php\\"
           }
         }
       }
     ],
     "commands": [
-      {
-        "command": "wekwekcode.seedatabases",
-        "title": "Lihat Database Saya",
-        "category": "WekCode"
-      },
       {
         "command": "wekwekcode.duck_start",
         "title": "CI4 Template",
@@ -95,6 +102,14 @@
       {
         "language": "html",
         "path": "snippet/ci4.json"
+      },
+      {
+        "language": "html",
+        "path": "snippet/bs5_snip.json"
+      },
+      {
+        "language": "php",
+        "path": "snippet/bs5_snip.json"
       }
     ],
     "icons": {

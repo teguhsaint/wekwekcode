@@ -1,0 +1,42 @@
+{
+  "bsmargin": {
+    "prefix": "mr",
+    "body": ["${1|m,mx-,my-,ms-,me-,mt-,mb-|}${2|auto,1,2,3,4,5|}"],
+    "description": "Bootstrap 5.3 Margin"
+  },
+
+  "bspadding": {
+    "prefix": "pd",
+    "body": ["${1|p,px-,py-,ps-,pe-,pt-,pb-|}${2|auto,1,2,3,4,5|}"],
+    "description": "Bootstrap 5.3 Padding"
+  },
+  "bsrow": {
+    "prefix": "row",
+    "body": ["<div class=\"row\">$1</div>"],
+    "description": "Bootstrap 5.3 Row"
+  },
+
+  "bscol": {
+    "prefix": "coldiv",
+    "body": ["${1|col,col-,col-sm-,col-md-,col-lg-|}${2|1,2,3,4,5,6,7,8,9,10,11,12|}"],
+    "description": "Bootstrap 5.3 Row"
+  },
+
+  "bscol-div": {
+    "prefix": "coldiv",
+    "body": ["<div class=\"${1|col,col-,col-sm-,col-md-,col-lg-|}${2|1,2,3,4,5,6,7,8,9,10,11,12|}\">$3</div>"],
+    "description": "Bootstrap 5.3 Row"
+  },
+  "bstable": {
+    "prefix": "table",
+    "body": ["${1|table|} ${2|table-bordered,table-striped,table-hover,table-bordeles|}"]
+  },
+  "bscard": {
+    "prefix": "card",
+    "body": ["<div class='card'>\n<div class='card-body'>\n$1\n</div>\n</div>"]
+  },
+  "bscard2": {
+    "prefix": "card-headerfooter",
+    "body": ["<div class='card'>\n<div class='card-header'></div>\n<div class='card-body'>\n$1\n</div>\n<div class='card-footer'></div>\n</div>"]
+  }
+}
