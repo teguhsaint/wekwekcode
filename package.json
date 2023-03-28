@@ -17,7 +17,7 @@
   "repository": {
     "url": "https://github.com/teguhsaint/wekwekcode.git"
   },
-  "version": "1.1.0",
+  "version": "1.1.1",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -30,7 +30,31 @@
   ],
   "main": "./extension.js",
   "contributes": {
+    "configuration": [
+      {
+        "title": "wekwekcode",
+        "properties": {
+          "wekwekcode.mysqlhost": {
+            "type": "string",
+            "default": "localhost"
+          },
+          "wekwekcode.mysqlusername": {
+            "type": "string",
+            "default": "root"
+          },
+          "wekwekcode.mysqlpassword": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    ],
     "commands": [
+      {
+        "command": "wekwekcode.seedatabases",
+        "title": "Lihat Database Saya",
+        "category": "WekCode"
+      },
       {
         "command": "wekwekcode.duck_start",
         "title": "CI4 Template",
@@ -100,7 +124,8 @@
     "@vscode/test-electron": "^2.2.0"
   },
   "dependencies": {
-    "decompress": "^4.2.1"
+    "decompress": "^4.2.1",
+    "mysql": "^2.18.1"
   },
   "__metadata": {
     "id": "89fce65e-2906-4587-a652-1103cba84b91",

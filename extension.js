@@ -4,12 +4,12 @@ const https = require("https");
 const fs = require("fs");
 
 // MODULE
+const test_conn = require("./lib/test_connect");
 const ci4_view = require("./lib/ci4_view");
 const start_phpserver = require("./lib/start_phpserver");
 const download_template = require("./lib/download_template");
 const ci4_controller = require("./lib/ci4_controller");
 const ci4_route = require("./lib/ci4_route");
-
 // END MODULE
 
 const direktori_user = vscode.workspace.workspaceFolders[0].uri.path.substring(1, 1000);
@@ -47,6 +47,7 @@ function activate(context) {
         kind: vscode.QuickPickItemKind.Separator, // this is new
       },
       { label: "Start PHP Server", items: 6 },
+      { label: "Show Databases", items: 7 },
       {
         kind: vscode.QuickPickItemKind.Separator, // this is new
       },
@@ -79,7 +80,9 @@ function activate(context) {
         case 6:
           start_phpserver.start_php_server();
           break;
-
+        case 7:
+          vscode.commands.executeCommand("wekwekcode.seedatabases");
+          break;
         default:
           break;
       }
@@ -138,7 +141,10 @@ function activate(context) {
     }
   });
 
-  context.subscriptions.push(showS, duck_starter, ci_controller, ci_routes, download_filess, ci_view_extend);
+  let lihat_database = vscode.commands.registerCommand("wekwekcode.seedatabases", function () {
+    test_conn.get_set();
+  });
+  context.subscriptions.push(lihat_database, showS, duck_starter, ci_controller, ci_routes, download_filess, ci_view_extend);
   showS.show();
 }
 
