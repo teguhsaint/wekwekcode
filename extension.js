@@ -46,7 +46,6 @@ function activate(context) {
         kind: vscode.QuickPickItemKind.Separator, // this is new
       },
       { label: "Start PHP Server", items: 6 },
-      { label: "Start PhpMyadmin Mysql", items: 7 },
     ];
 
     // showQuickPick
